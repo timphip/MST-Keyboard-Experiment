@@ -39,7 +39,7 @@ $UID =  "";
 $dir = "att-test";
 $steps = 0; 
 $practice_dir = "webfile/practice";
-$easy_dir="webfile/easy";
+$easy_dir="webfile/maps";
 $med_dir="webfile/medium";
 $hard_dir="webfile/hard";
 
@@ -49,8 +49,8 @@ $easy_names = scandir($easy_dir);
 $hard_names = scandir($hard_dir);
 $number_of_practice = count($practice_names) - 2;
 $num_easy = count($easy_names) - 2;
-$num_med = count($med_names) - 2; // 0
-$num_hard = count($hard_names) - 2; // 0
+$num_med =  0 ; // count($med_names) - 2; // 0
+$num_hard =  0 ; // count($hard_names) - 2; // 0
 $num_test = $num_easy + $num_med + $num_hard; //i + $num_med + $num_hard;
 
 // echo "number_of_practice  $number_of_practice <br>";
