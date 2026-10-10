@@ -243,7 +243,7 @@ if ($validrequest == 1) {
     echo "<p style='font-family: Optima; font-size: 17px' align='center'>";
     echo "Let's look at this map. There are some black squares, a brick wall, and your character.<br><br>";
     echo "There is ONE exit in this maze. This exit could be behind any one of the black cells.<br><br>";
-    echo "You can move your blue character by clicking one of adjacent white cells.</p>";
+    echo "Use the arrow keys to move your blue character. Hold a key to keep moving.</p>";
     echo "<p style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>";
   } 
   else if ($mazeno < $number_of_practice) { 
@@ -567,7 +567,9 @@ function generate_table(wagent) {
                          bkc = "#3D3D3D";
                   }
              }
-             
+             // ----------------------------------------------------------------------------------------------
+             sclick = "tableClickedVoid"; // Mouse clicks do not move the character.
+             // ----------------------------------------------------------------------------------------------
              if (w==2 && seen[y][x] == 1 && wagent !=2) {
                   s = s + "<td bgcolor='#ff0000' width=" + cellsize + "px height=" + cellsize + "px onclick='"; 
                   s = s + sclick + "();'>";
@@ -646,6 +648,48 @@ function tableClickedYplus() {
  }
 }
 
+
+// ------------------------------------------------------------------------------
+let heldArrow = null;
+let repeatTimer = null;
+const arrowMoves = {
+  ArrowLeft:  [-1, 0, tableClickedXminus],
+  ArrowRight: [ 1, 0, tableClickedXplus],
+  ArrowUp:    [ 0,-1, tableClickedYminus],
+  ArrowDown:  [ 0, 1, tableClickedYplus]
+};
+
+function stopArrow() {
+  clearInterval(repeatTimer);
+  repeatTimer = null;
+  heldArrow = null;
+}
+
+function moveArrow() {
+  if (!heldArrow || progress_step >= maxsteps) return;
+  const [dx, dy, move] = arrowMoves[heldArrow];
+  const nx = ax + dx, ny = ay + dy;
+  if (nx < 0 || ny < 0 || nx >= width || ny >= height) return;
+  if (seen[ny][nx] !== 1 || Number(warr[ny][nx]) === 3) return;
+  if (Number(warr[ny][nx]) === 2) stopArrow();
+  move();
+}
+
+document.addEventListener("keydown", function(e) {
+  if (!arrowMoves[e.key]) return;
+  e.preventDefault();
+  if (heldArrow === e.key) return;
+  stopArrow();
+  heldArrow = e.key;
+  moveArrow();
+  if (heldArrow) repeatTimer = setInterval(moveArrow, 180);
+});
+
+document.addEventListener("keyup", function(e) {
+  if (e.key === heldArrow) stopArrow();
+});
+window.addEventListener("blur", stopArrow);
+// ------------------------------------------------------------------------------
 
 function tableClicked() {
         progress_step = progress_step + 1;
