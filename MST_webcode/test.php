@@ -36,8 +36,29 @@ function test_input($data) {
 
 // define variables and set to empty values
 $UID =  "";
+// $dir = "att-test";
+// $steps = 0; 
+# ------------------------------------------------------------------------------------------
 $dir = "att-test";
-$steps = 0; 
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["key_event"])) {
+    $id = $_POST["UID"] ?? "";
+    if (preg_match('/^S[0-9]+$/', $id)) {
+        $row = [
+            basename($_POST["maze"] ?? ""),
+            $_POST["key_event"],
+            $_POST["key"] ?? "",
+            (int)($_POST["ts"] ?? 0),
+            (int)($_POST["x"] ?? 0),
+            (int)($_POST["y"] ?? 0)
+        ];
+        file_put_contents("$dir/{$id}events.txt", implode(",", $row) . "\n", FILE_APPEND | LOCK_EX);
+    }
+    exit;
+}
+
+$steps = 0;
+# ------------------------------------------------------------------------------------------
 $practice_dir = "webfile/practice";
 $easy_dir="webfile/maps";
 $med_dir="webfile/medium";
@@ -675,10 +696,19 @@ function moveArrow() {
   move();
 }
 
+function recordEvent(type, key) {
+  navigator.sendBeacon("test.php", new URLSearchParams({
+    UID: u_id, maze: mf, key_event: type, key: key || "none",
+    ts: String(Date.now()), x: String(ax), y: String(ay)
+  }));
+}
+
 document.addEventListener("keydown", function(e) {
   if (!arrowMoves[e.key]) return;
   e.preventDefault();
   if (heldArrow === e.key) return;
+
+  recordEvent("keydown", e.key); 
   stopArrow();
   heldArrow = e.key;
   moveArrow();
@@ -686,6 +716,7 @@ document.addEventListener("keydown", function(e) {
 });
 
 document.addEventListener("keyup", function(e) {
+  if (arrowMoves[e.key]) recordEvent("keyup", e.key);
   if (e.key === heldArrow) stopArrow();
 });
 window.addEventListener("blur", stopArrow);
@@ -695,6 +726,7 @@ function tableClicked() {
         progress_step = progress_step + 1;
 	jssteps = jssteps+1;
         savedpath += "p(" + ax + "," + ay + ");";
+        recordEvent("move", heldArrow);
 
         var newtime = timestamp();
         var difference = newtime - oldtime;

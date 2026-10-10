@@ -54,8 +54,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $s = $dir . "/" . $UID . ".txt";
         $f = fopen($s, "a") or die("101: Unable to open file!" . $s);
-
-
+        if (!empty($_POST["name"])) {
+            $maze = test_input($_POST["name"]);
+            $steps = test_input($_POST["steps"] ?? "");
+            $path = test_input($_POST["path"] ?? "");
+            $time = test_input($_POST["time"] ?? "");
+            fwrite($f, "$ip $date $browser $UID $maze $steps $path $time\n");
+        }
         fclose($f);
    }
 }
