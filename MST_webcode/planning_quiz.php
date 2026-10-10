@@ -73,7 +73,7 @@ Please answer the quiz questions below to move on.<br><br><br>
         <input style='border:0' type='radio' id = 'id2' name='objective' value='2' /> visit every square in the maze</><br>
         <input style='border:0' type='radio' id = 'id3' name='objective' value='3' /> see how lucky I am</><br>
         <input style='border:0' type='radio' id = 'id1' name='objective' value='1' /> solve the mazes in as few steps as possible</><br>
-        <input style='border:0' type='radio' id = 'id4' name='objective' value='4' /> click as fast as possible</><br><br>
+        <input style='border:0' type='radio' id = 'id4' name='objective' value='4' /> move as fast as possible</><br><br>
     </fieldset>
     <br>
 
