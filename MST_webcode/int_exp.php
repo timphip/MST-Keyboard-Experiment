@@ -38,16 +38,15 @@ if ( strpos($browser, "Chrome") ) {
   <div style="border: 1px solid #FF461E; display: inline-block; padding: 10px">
   <font color='#FF461E'>
     <b>&#10071 IMPORTANT &#10071</b> <br><br>
-    This study runs best in Firefox, on a desktop/laptop. <br><br>
+    This study runs best on a desktop/laptop. <br><br>
     The study will <b>NOT </b> run on Safari, or a mobile device.
   </font>
   </div>
   <br><br>
 
   In this study you will look for an exit in a maze. <br><br> 
-  After this task, you will be asked to answer 3 unrelated <br><br> 
-  reasoning questions and provide demographic information.<br><br>
-  The study is expected to take about 20 minutes.<br><br>
+  After this, you will be asked to provide demographic information.<br><br>
+  The study is expected to take about 10 minutes.<br><br>
   Thanks for participating!
 
 </font>

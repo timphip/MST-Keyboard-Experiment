@@ -99,12 +99,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div id="ex2_container">
 <font style="font-family: Optima">
    <br><b>INSTRUCTIONS (PLEASE READ CAREFULLY)</b><br><br>
-   Your task is to exit the maze by reaching the red square in as <mark> few steps as possible</mark>. <br><br>
-   You can move one square at a time by clicking on the white squares next to your character.<br><br>
+   Your task is to exit the maze by reaching the red square, which is initially hidden. <br><br>
+   Use the arrow keys on your keyboard to move through the maze. <br><br>
    You cannot see through the walls. The squares you cannot see yet are black.<br><br>
-   <mark> The exit is equally likely to be behind any of the black squares.</mark> <br><br> 
+   <mark> The exit could be behind any of the black squares. </mark> <br><br> 
    A maze looks like this: <br><br>
-   <img src='webfile/exampleplanning.png' width='500' height='270' > 
+   <img src='webfile/exampleplanning_keyboard.png' width='500' height='270' >
    
    <br><b> <font size="+4">💰</font> YOU COULD GET A BONUS! <font size="+4">💰</font> </b><br><br>
    <mark>Planning your path wisely will pay off.</mark> <br><br> 
