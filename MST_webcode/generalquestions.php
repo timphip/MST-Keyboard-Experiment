@@ -20,7 +20,7 @@ function test_input($data) {
 // set this to one when comment submitted
 $showend = 0;
 $rank = 9;
-$rankBonusCutoff = 3;
+// $rankBonusCutoff = 3;
 $dir = "att-test";
 
 $ip=$_SERVER['REMOTE_ADDR'];
@@ -236,22 +236,10 @@ function makeRuler() {
   return your_score + s;
 }
 
-if ( ruler == 1) {
-    
-         // output of makeRuler
-         s = makeRuler();
-         ruler = s
-         // ruler = ""
-    
-         ruler += "<p style='font-family:Optima'>Please paste the following code into the original HIT before submitting: <br><br><mark><b>" +  uid + "</b></mark></p>";
-         boilerplate = "<p><small> If you are interested in more information about of this study, " + 
-                       " please contact the experimenter.</small></p>";
-
-         document.getElementById("ex2_container").innerHTML = "<br>" + 
-                 ruler +
-                 "<p style='font-family:Optima'>The experiment is over and you can now safely navigate away.<br><br>" + 
-                 "In this experiment, we try to assess how people evaluate probabilities in a context of a spatial task.</p>" +
-                 boilerplate;
+if (ruler == 1) {
+    document.getElementById("ex2_container").innerHTML =
+        "<p><b>Your completion code is " + uid + "</b></p>" +
+        "<p>The experiment is over and you can now safely navigate away</p>";
 }
 
 function validateForm() {

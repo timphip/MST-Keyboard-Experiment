@@ -105,15 +105,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    <mark> The exit could be behind any of the black squares. </mark> <br><br> 
    A maze looks like this: <br><br>
    <img src='webfile/exampleplanning_keyboard.png' width='500' height='270' >
-   
-   <br><b> <font size="+4">💰</font> YOU COULD GET A BONUS! <font size="+4">💰</font> </b><br><br>
-   <mark>Planning your path wisely will pay off.</mark> <br><br> 
-   The better you plan your path, the fewer steps you'll take and the more bonus you can earn. <br><br>
-   <!-- At the end, you will see how well you did compared to other participants. <br><br> -->
-   <!-- When all participants' total steps are ranked from fewest to most: <br><br> -->
-   <b>A bonus of $3</b> will be awarded if you're in the top 20%, OR <br><br>
-   <b>A bonus of $2</b> will be awarded if you're better than average, OR <br><br>
-   <b>A bonus of $1</b> will be awarded if you're better than the bottom 30%. <br><br>
 </font>
 
 <form name="frm" action="test.php" method="post" onsubmit="return validateForm()">

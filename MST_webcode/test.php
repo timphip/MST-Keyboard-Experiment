@@ -265,18 +265,18 @@ if ($validrequest == 1) {
     echo "Let's look at this map. There are some black squares, a brick wall, and your character.<br><br>";
     echo "There is ONE exit in this maze. This exit could be behind any one of the black cells.<br><br>";
     echo "Use the arrow keys to move your blue character. Hold a key to keep moving.</p>";
-    echo "<p style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>";
+    // echo "<p style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>";
   } 
   else if ($mazeno < $number_of_practice) { 
     $txt = "Practice Maze " . ($mazeno+1) . " of " . $number_of_practice;
     echo "<h3 style='font-family: Optima' align='center'>" . $txt . "</h3>";
-    echo "<p  style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>";
+    // echo "<p  style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>";
     echo "<table align='center' style='widthoat:center; border:0px solid white;'><tr style=' border:none'>";
   } 
   else {
     $txt = "Maze " . ($mazeno- $number_of_practice +1) . " of " . $num_test;
     echo "<h3 style='font-family: Optima' align='center'>" . $txt . "</h3>";
-    echo "<p style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>"; 
+    // echo "<p style='font-family: Optima; font-size: 17px' align='center'>Please find the exit in as <mark>few steps</mark> as possible.</p>"; 
   }
 } else {
   echo "<h2>Err: Invalid Request</h2>\n";
@@ -536,7 +536,7 @@ function generate_table(wagent) {
     }
 
     healthbar += bar + "</table> <br><br>";
-    var progress = "<p style='font-size:22px; font-family:Optima; color:#ff0000'>Steps: " +  parseInt(progress_step-1) + "</p>" + healthbar;
+    var progress = "";
 
     var s = bigtable + "<td style=' border:none'>" + progress + " <table align='center' style='width:absolute; widthoat:center'>";
 
